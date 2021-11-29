@@ -1163,7 +1163,7 @@ MonoBehaviour:
   distanceToGround: 0.5
   platformsMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 9
 --- !u!1 &316779769
 GameObject:
   m_ObjectHideFlags: 0

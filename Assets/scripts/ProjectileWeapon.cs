@@ -54,6 +54,7 @@ public abstract class ProjectileWeapon : MonoBehaviour
     /// <param name="weaponName">the name of this weapon</param>
     /// <param name="projectile">The projectile prefab the gun will shoot</param>
     /// <param name="projectileSpawnOffset">The position offset for the weapon</param>
+    /// <param name="projectileLifeTime">This is the life time in seconds for each projectile of the weapon.</param>
     /// <param name="delayBetweenShoots">The time between each shot</param>
     /// <param name="speed">How fast the projectile moves when shot</param>
     /// <param name="bulletsPoolSize">The pool size for the projectiles</param>
@@ -61,12 +62,13 @@ public abstract class ProjectileWeapon : MonoBehaviour
     public virtual void StartWeapon(string weaponName,
                                     GameObject projectile,
                                     Vector3 projectileSpawnOffset,
+                                    float projectileLifeTime,
                                     float delayBetweenShoots,
                                     float speed,
                                     int bulletsPoolSize,
                                     bool IncreasePoolSize)
     {
-        _bulletsPool = new ObjectPool(projectile, bulletsPoolSize, IncreasePoolSize);
+        _bulletsPool = new ObjectPool(projectile, bulletsPoolSize, IncreasePoolSize, projectileLifeTime);
         _canShoot = true;
         _delayBetweenShoots = delayBetweenShoots;
         _speed = speed;

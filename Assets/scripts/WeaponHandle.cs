@@ -61,7 +61,7 @@ public class WeaponHandle : MonoBehaviour
     {
         // small optimization for garbagge collection
         GameObject spawnedWeapon;
-        ProjectileWeapon proyectile;
+        ProjectileWeapon proyectileWeapon;
         foreach (WeaponPrefab weapon in _weaponData.weapons)
         {
             spawnedWeapon = Instantiate(weapon.weaponModel);
@@ -69,14 +69,15 @@ public class WeaponHandle : MonoBehaviour
             spawnedWeapon.transform.localPosition = weapon.weaponPositionOffset;
             spawnedWeapon.transform.localRotation = weapon.weaponRotationOffset;
             spawnedWeapon.SetActive(false);
-            proyectile = spawnedWeapon.GetComponent<ProjectileWeapon>();
-            proyectile.StartWeapon(weapon.name,
-                                   weapon.projectile,
-                                   weapon.projectileSpawnOffset,
-                                   _weaponData.delayBetweenShoots,
-                                   _weaponData.speed,
-                                   _weaponData.bulletsPoolSize,
-                                   _weaponData.IncreasePoolSize);
+            proyectileWeapon = spawnedWeapon.GetComponent<ProjectileWeapon>();
+            proyectileWeapon.StartWeapon(weapon.name,
+                                         weapon.projectile,
+                                         weapon.projectileSpawnOffset,
+                                         weapon.projectileLifeTime,
+                                         _weaponData.delayBetweenShoots,
+                                         _weaponData.speed,
+                                         _weaponData.bulletsPoolSize,
+                                         _weaponData.IncreasePoolSize);
 
             _weaponsDict.Add(weapon.name, spawnedWeapon);
         }

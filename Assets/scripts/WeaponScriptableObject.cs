@@ -115,4 +115,13 @@ public class WeaponPrefab
     /// </summary>
     [Tooltip("This is the position offset where the projectile will spawn from the weapon.")]
     public Vector3 projectileSpawnOffset;
+
+    /// <summary>
+    /// This is the projectile life time (in
+    /// seconds) or the time it will be enabled
+    /// after it was fired. Once this time passes
+    /// the projectile will disable itself.
+    /// </summary>
+    [Tooltip("This is the projectile life time (in seconds) or the time it will be enabled after it was fired. Once this time passes the projectile will disable itself.")]
+    public float projectileLifeTime;
 }

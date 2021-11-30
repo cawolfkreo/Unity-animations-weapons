@@ -26,6 +26,12 @@ public class ObjectPool
     private GameObject _prefabForThePool;
 
     /// <summary>
+    /// This is the life time for each object
+    /// instantiated for the pool.
+    /// </summary>
+    private float _projectileLifeTime;
+
+    /// <summary>
     /// This is the GameObject where the pool will
     /// be stored in the scene's hierarchy.
     /// </summary>
@@ -35,15 +41,16 @@ public class ObjectPool
     /// This creates an object pool that stores
     /// instances of the specified game object.
     /// </summary>
-    /// <param name="root">The root object in the scene's hirerarchy</param>
     /// <param name="prefabForThePool">The prefab used to create the instances of the game object to store</param>
     /// <param name="poolSize">The initial size of the pool</param>
     /// <param name="IncreasePoolSize">How the pool will behave if it is full. True to increase the pool size and false to re-use old objects.</param>
-    public ObjectPool(GameObject prefabForThePool, int poolSize, bool IncreasePoolSize)
+    /// <param name="projectileLifeTime">The lifetime for each pooled object.</param>
+    public ObjectPool(GameObject prefabForThePool, int poolSize, bool IncreasePoolSize, float projectileLifeTime)
     {
         _bulletsPool = new Queue<GameObject>();
         _increasePoolSize = IncreasePoolSize;
         _prefabForThePool = prefabForThePool;
+        _projectileLifeTime = projectileLifeTime;
 
         GameObject poolObject = new GameObject($"{prefabForThePool.name}'s pool");
         _poolParent = poolObject.transform;
@@ -63,6 +70,8 @@ public class ObjectPool
     private GameObject InstanceAnObject()
     {
         GameObject objectInstance = GameObject.Instantiate(_prefabForThePool);
+        BasicPoolProjectile basic = objectInstance.GetComponent<BasicPoolProjectile>();
+        basic.TimeIsEnabled = _projectileLifeTime;
         objectInstance.transform.parent = _poolParent;
         objectInstance.SetActive(false);
 
@@ -87,6 +96,7 @@ public class ObjectPool
         }
         else
         {
+            gameObject.SetActive(false);
             _bulletsPool.Enqueue(gameObject);
         }
 

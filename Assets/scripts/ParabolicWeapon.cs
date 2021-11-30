@@ -10,6 +10,12 @@ using UnityEngine;
 /// </summary>
 public class ParabolicWeapon : ProjectileWeapon
 {
+    /// <summary>
+    /// This is the implementation of the fire
+    /// weapon event. This method will be called
+    /// everytime the weapon is fired by the
+    /// player.
+    /// </summary>
     protected override void OnFireWeapon()
     {
         GameObject bullet = _bulletsPool.GetAnInstance();

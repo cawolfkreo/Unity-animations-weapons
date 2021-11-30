@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenShoots: 0.5
   speed: 30
-  bulletsPoolSize: 10
+  bulletsPoolSize: 2
   IncreasePoolSize: 0
   weapons:
   - name: Weapon1

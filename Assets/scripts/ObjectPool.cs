@@ -85,9 +85,12 @@ public class ObjectPool
             _bulletsPool.Enqueue(gameObject);
             gameObject = InstanceAnObject();
         }
+        else
+        {
+            _bulletsPool.Enqueue(gameObject);
+        }
 
         gameObject.SetActive(true);
-        _bulletsPool.Enqueue(gameObject);
 
         return gameObject;
     }

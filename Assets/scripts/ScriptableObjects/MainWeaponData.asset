@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: MainWeaponData
   m_EditorClassIdentifier: 
   delayBetweenShoots: 0.5
-  speed: 50
-  bulletsPoolSize: 32
+  speed: 30
+  bulletsPoolSize: 10
   IncreasePoolSize: 0
   weapons:
   - name: weapon1
     weaponModel: {fileID: 622345764866668119, guid: ca4262e56a6f75545a4e17aa9e3969ce, type: 3}
     weaponPositionOffset: {x: 0, y: 0, z: 0}
-    weaponRotationOffset: {x: 0, y: 0, z: 0}
+    weaponRotationOffset: {x: 0, y: 0, z: 0, w: 0}
     projectile: {fileID: 5105260178265009368, guid: 715854d0bcc0ba94ab02a3a8066de10f, type: 3}
+    projectileSpawnOffset: {x: 0, y: 0, z: 0}

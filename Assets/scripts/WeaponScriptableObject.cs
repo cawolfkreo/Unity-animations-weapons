@@ -101,10 +101,18 @@ public class WeaponPrefab
     [Tooltip("This is the weapon offset that will be used to offset the weapon from the attachment point.")]
     public Quaternion weaponRotationOffset;
 
+    [Header("Projectile settings")]
     /// <summary>
     /// This is the projectile used for projectile
     /// based weapons.
     /// </summary>
     [Tooltip("This is the projectile used for projectile based weapons.")]
     public GameObject projectile;
+
+    /// <summary>
+    /// This is the position offset where the
+    /// projectile will spawn from the weapon.
+    /// </summary>
+    [Tooltip("This is the position offset where the projectile will spawn from the weapon.")]
+    public Vector3 projectileSpawnOffset;
 }

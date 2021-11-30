@@ -17,7 +17,7 @@ MonoBehaviour:
   bulletsPoolSize: 10
   IncreasePoolSize: 0
   weapons:
-  - name: weapon1
+  - name: Weapon1
     weaponModel: {fileID: 622345764866668119, guid: ca4262e56a6f75545a4e17aa9e3969ce, type: 3}
     weaponPositionOffset: {x: 0, y: 0, z: 0}
     weaponRotationOffset: {x: 0, y: 0, z: 0, w: 0}

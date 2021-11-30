@@ -2988,6 +2988,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8033397990894919309, guid: a483b77caeab80d41ab9876110179431, type: 3}
+      propertyPath: m_Height
+      value: 3.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033397990894919309, guid: a483b77caeab80d41ab9876110179431, type: 3}
+      propertyPath: m_Radius
+      value: 1.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033397990894919309, guid: a483b77caeab80d41ab9876110179431, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -3052,6 +3060,14 @@ PrefabInstance:
     - target: {fileID: 3764215412412237802, guid: ca4262e56a6f75545a4e17aa9e3969ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873722105728743573, guid: ca4262e56a6f75545a4e17aa9e3969ce, type: 3}
+      propertyPath: m_Height
+      value: 3.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873722105728743573, guid: ca4262e56a6f75545a4e17aa9e3969ce, type: 3}
+      propertyPath: m_Radius
+      value: 1.11
       objectReference: {fileID: 0}
     - target: {fileID: 6873722105728743573, guid: ca4262e56a6f75545a4e17aa9e3969ce, type: 3}
       propertyPath: m_IsTrigger
@@ -3119,6 +3135,14 @@ PrefabInstance:
     - target: {fileID: 2939336577227317504, guid: cc68273a13a597f41bcecf4a6f0886b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7242069896283288120, guid: cc68273a13a597f41bcecf4a6f0886b4, type: 3}
+      propertyPath: m_Height
+      value: 3.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7242069896283288120, guid: cc68273a13a597f41bcecf4a6f0886b4, type: 3}
+      propertyPath: m_Radius
+      value: 1.11
       objectReference: {fileID: 0}
     - target: {fileID: 7242069896283288120, guid: cc68273a13a597f41bcecf4a6f0886b4, type: 3}
       propertyPath: m_IsTrigger

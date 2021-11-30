@@ -70,7 +70,8 @@ public class WeaponHandle : MonoBehaviour
             spawnedWeapon.transform.localRotation = weapon.weaponRotationOffset;
             spawnedWeapon.SetActive(false);
             proyectile = spawnedWeapon.GetComponent<ProjectileWeapon>();
-            proyectile.StartWeapon(weapon.projectile,
+            proyectile.StartWeapon(weapon.name,
+                                   weapon.projectile,
                                    weapon.projectileSpawnOffset,
                                    _weaponData.delayBetweenShoots,
                                    _weaponData.speed,
@@ -78,7 +79,27 @@ public class WeaponHandle : MonoBehaviour
                                    _weaponData.IncreasePoolSize);
 
             _weaponsDict.Add(weapon.name, spawnedWeapon);
-            _currentWeaponName = weapon.name;
         }
+    }
+    /// <summary>
+    /// When the player touches a weapon we need
+    /// to update the weapon he's holding. With
+    /// this listener we can detect when the player
+    /// is touching a weapon and act accordingly.
+    /// </summary>
+    /// <param name="other">The collider fired received.</param>
+    private void OnTriggerEnter(Collider other)
+    {
+        string objectName = other.gameObject.name;
+        if (!_weaponsDict.ContainsKey(objectName))
+            return;
+
+        if (_currentWeaponName != null)
+        {
+            _weaponsDict[_currentWeaponName].SetActive(false);
+        }
+
+        _weaponsDict[objectName].SetActive(true); ;
+        _currentWeaponName = objectName;
     }
 }

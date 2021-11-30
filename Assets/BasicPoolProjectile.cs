@@ -37,7 +37,6 @@ public class BasicPoolProjectile : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        Debug.Log("I'll wait and kill myself");
         _corutine = StartCoroutine(DisableProjectile());
     }
 
@@ -49,7 +48,6 @@ public class BasicPoolProjectile : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        Debug.Log("I'm being killed!");
         if (_corutine != null || _disabledMyself)
             return;
 
@@ -65,6 +63,5 @@ public class BasicPoolProjectile : MonoBehaviour
         yield return new WaitForSeconds(TimeIsEnabled);
         _disabledMyself = true;
         gameObject.SetActive(false);
-        Debug.Log("guess I'll die!");
     }
 }

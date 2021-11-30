@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenShoots: 0.5
   speed: 30
-  bulletsPoolSize: 10
-  IncreasePoolSize: 0
+  bulletsPoolSize: 2
+  IncreasePoolSize: 1
   weapons:
   - name: Weapon1
     weaponModel: {fileID: 622345764866668119, guid: ca4262e56a6f75545a4e17aa9e3969ce, type: 3}

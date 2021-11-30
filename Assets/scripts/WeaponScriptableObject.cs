@@ -99,7 +99,7 @@ public class WeaponPrefab
     /// attachment point.
     /// </summary>
     [Tooltip("This is the weapon offset that will be used to offset the weapon from the attachment point.")]
-    public Vector3 weaponRotationOffset;
+    public Quaternion weaponRotationOffset;
 
     /// <summary>
     /// This is the projectile used for projectile

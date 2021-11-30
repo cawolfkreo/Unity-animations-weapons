@@ -30,9 +30,8 @@ public class GameManagerSingleton : MonoBehaviour
     /// The data used for the behaviour of the
     /// different weapons.
     /// </summary>
-    [SerializeField]
     [Tooltip("The data used for the behaviour of the different weapons.")]
-    private WeaponScriptableObject weaponData;
+    public WeaponScriptableObject weaponData;
 
     /// <summary>
     /// This is the action event used when we want

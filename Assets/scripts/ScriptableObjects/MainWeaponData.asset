@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eaf46c1f8be35144a06561caa6543e5, type: 3}
+  m_Name: MainWeaponData
+  m_EditorClassIdentifier: 
+  delayBetweenShoots: 0.5
+  speed: 50
+  bulletsPoolSize: 32
+  IncreasePoolSize: 0
+  weapons:
+  - name: weapon1
+    weaponModel: {fileID: 622345764866668119, guid: ca4262e56a6f75545a4e17aa9e3969ce, type: 3}
+    weaponPositionOffset: {x: 0, y: 0, z: 0}
+    weaponRotationOffset: {x: 0, y: 0, z: 0}
+    projectile: {fileID: 5105260178265009368, guid: 715854d0bcc0ba94ab02a3a8066de10f, type: 3}

@@ -21,9 +21,18 @@ public class GameManagerSingleton : MonoBehaviour
     /// manager told for the last time to the game
     /// object to begin playing.
     /// </summary>
-    [Tooltip("This is the animation the game manager told to the model the last time.")]
     [SerializeField]
+    [Tooltip("This is the animation the game manager told to the model the last time.")]
     private string animationToPlay;
+
+    [Header("Weapon Data")]
+    /// <summary>
+    /// The data used for the behaviour of the
+    /// different weapons.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The data used for the behaviour of the different weapons.")]
+    private WeaponScriptableObject weaponData;
 
     /// <summary>
     /// This is the action event used when we want

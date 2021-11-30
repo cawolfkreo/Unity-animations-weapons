@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d58e1a35736984ebe5a74684cbbde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationToPlay: 
+  weaponData: {fileID: 11400000, guid: 20548646abd4b24479fafbd4cbfba1a3, type: 2}

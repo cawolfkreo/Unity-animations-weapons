@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(0f, 200f)]
     [SerializeField]
     [Tooltip("This controls how fast or how slow the camera moves when the player moves it's mouse.")]
-    private float LookSensitivity = 50f;
+    private float lookSensitivity = 50f;
 
     /// <summary>
     /// This is the speed that the player will have when moving."
@@ -123,10 +123,10 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateCamera()
     {
         float mouseX = Input.GetAxis("Mouse X");
-        mouseX *= LookSensitivity * Time.deltaTime;
+        mouseX *= lookSensitivity * Time.deltaTime;
 
         float mouseY = Input.GetAxis("Mouse Y");
-        mouseY *= LookSensitivity * Time.deltaTime;
+        mouseY *= lookSensitivity * Time.deltaTime;
 
         _cameraRotation -= mouseY;
         _cameraRotation = Mathf.Clamp(_cameraRotation, -90f, 90f);

@@ -62,6 +62,10 @@ public class WeaponScriptableObject : ScriptableObject
         speed = Mathf.Clamp(speed, 0f, float.MaxValue);
         bulletsPoolSize = (int)Mathf.Clamp(bulletsPoolSize, 0f, int.MaxValue);
         delayBetweenShoots = Mathf.Clamp(delayBetweenShoots, 0f, float.MaxValue);
+        foreach (WeaponPrefab weapon in weapons)
+        {
+            weapon.projectileLifeTime = (int)Mathf.Clamp(weapon.projectileLifeTime, 0f, int.MaxValue);
+        }
     }
 }
 
@@ -124,4 +128,20 @@ public class WeaponPrefab
     /// </summary>
     [Tooltip("This is the projectile life time (in seconds) or the time it will be enabled after it was fired. Once this time passes the projectile will disable itself.")]
     public float projectileLifeTime;
+
+    /// <summary>
+    /// If the projectile contains an effect, this
+    /// is how far the effects of the projectile
+    /// extends.
+    /// </summary>
+    [Tooltip("If the projectile contains an effect, this is how far the effects of the projectile extends.")]
+    public float radiousEffect;
+
+    /// <summary>
+    /// If the projectile contains an effect, this
+    /// is how strong the effects of the projectile
+    /// is on other objects or on itself.
+    /// </summary>
+    [Tooltip("If the projectile contains an effect, this is how strong the effects of the projectile is on other objects or on itself.")]
+    public float effectStrength;
 }

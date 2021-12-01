@@ -41,6 +41,19 @@ public class BasicPoolProjectile : MonoBehaviour
     }
 
     /// <summary>
+    /// This sets the values for any effects
+    /// a projectile might have.
+    /// </summary>
+    /// <param name="radiousEffect">The readious for the effect</param>
+    /// <param name="effectStrength">thre strength of the effect</param>
+    public virtual void SetAttractValues(float radiousEffect, float effectStrength)
+    {
+        //Since the base projectile doesn't have effects, this method
+        //is up to projectiles that inherit from the class to implement
+        //and this is why it has an empty body
+    }
+
+    /// <summary>
     /// This is called when the active value of the
     /// game object is set to false. This disables
     /// the component and it is important that the

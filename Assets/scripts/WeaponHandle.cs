@@ -74,6 +74,8 @@ public class WeaponHandle : MonoBehaviour
                                          weapon.projectile,
                                          weapon.projectileSpawnOffset,
                                          weapon.projectileLifeTime,
+                                         weapon.radiousEffect,
+                                         weapon.effectStrength,
                                          _weaponData.delayBetweenShoots,
                                          _weaponData.speed,
                                          _weaponData.bulletsPoolSize,

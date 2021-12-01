@@ -32,6 +32,18 @@ public class ObjectPool
     private float _projectileLifeTime;
 
     /// <summary>
+    /// This is the radious where the effects of
+    /// the projectile extend.
+    /// </summary>
+    private float _radiousEffect;
+
+    /// <summary>
+    /// This is how strong are the effects of the
+    /// projectile.
+    /// </summary>
+    private float _effectStrength;
+
+    /// <summary>
     /// This is the GameObject where the pool will
     /// be stored in the scene's hierarchy.
     /// </summary>
@@ -45,12 +57,14 @@ public class ObjectPool
     /// <param name="poolSize">The initial size of the pool</param>
     /// <param name="IncreasePoolSize">How the pool will behave if it is full. True to increase the pool size and false to re-use old objects.</param>
     /// <param name="projectileLifeTime">The lifetime for each pooled object.</param>
-    public ObjectPool(GameObject prefabForThePool, int poolSize, bool IncreasePoolSize, float projectileLifeTime)
+    public ObjectPool(GameObject prefabForThePool, int poolSize, bool IncreasePoolSize, float projectileLifeTime, float radiousEffect, float effectStrength)
     {
         _bulletsPool = new Queue<GameObject>();
         _increasePoolSize = IncreasePoolSize;
         _prefabForThePool = prefabForThePool;
         _projectileLifeTime = projectileLifeTime;
+        _radiousEffect = radiousEffect;
+        _effectStrength = effectStrength;
 
         GameObject poolObject = new GameObject($"{prefabForThePool.name}'s pool");
         _poolParent = poolObject.transform;
@@ -72,6 +86,7 @@ public class ObjectPool
         GameObject objectInstance = GameObject.Instantiate(_prefabForThePool);
         BasicPoolProjectile basic = objectInstance.GetComponent<BasicPoolProjectile>();
         basic.TimeIsEnabled = _projectileLifeTime;
+        basic.SetAttractValues(_radiousEffect, _effectStrength);
         objectInstance.transform.parent = _poolParent;
         objectInstance.SetActive(false);
 

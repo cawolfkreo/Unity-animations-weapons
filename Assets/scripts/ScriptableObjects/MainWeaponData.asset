@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenShoots: 0.5
   speed: 30
-  bulletsPoolSize: 2
-  IncreasePoolSize: 1
+  bulletsPoolSize: 10
+  IncreasePoolSize: 0
   weapons:
   - name: Weapon1
     weaponModel: {fileID: 622345764866668119, guid: ca4262e56a6f75545a4e17aa9e3969ce, type: 3}
@@ -23,14 +23,18 @@ MonoBehaviour:
     weaponRotationOffset: {x: 0, y: 0, z: 0, w: 0}
     projectile: {fileID: 5105260178265009368, guid: 715854d0bcc0ba94ab02a3a8066de10f, type: 3}
     projectileSpawnOffset: {x: 0, y: 0, z: 0}
-    projectileLifeTime: 5
+    projectileLifeTime: 25
+    radiousEffect: 0
+    effectStrength: 0
   - name: Weapon2
     weaponModel: {fileID: 1182276688016016050, guid: cc68273a13a597f41bcecf4a6f0886b4, type: 3}
     weaponPositionOffset: {x: 0, y: 0, z: 0}
     weaponRotationOffset: {x: 0, y: 0, z: 0, w: 0}
     projectile: {fileID: 5105260178265009368, guid: fdda18795733cd9448651a2bb6a9f56c, type: 3}
     projectileSpawnOffset: {x: 0, y: 0, z: 0}
-    projectileLifeTime: 5
+    projectileLifeTime: 2
+    radiousEffect: 40
+    effectStrength: 100
   - name: Weapon3
     weaponModel: {fileID: 2993470969456869723, guid: a483b77caeab80d41ab9876110179431, type: 3}
     weaponPositionOffset: {x: 0, y: 0, z: 0}
@@ -38,3 +42,5 @@ MonoBehaviour:
     projectile: {fileID: 5105260178265009368, guid: b0ccbb9f318fafe49a43b6f6f7513449, type: 3}
     projectileSpawnOffset: {x: 0, y: 0, z: 0}
     projectileLifeTime: 5
+    radiousEffect: 5
+    effectStrength: 50

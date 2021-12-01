@@ -35,12 +35,19 @@ public class GrenadeProjectile : BasicPoolProjectile
         _explosionStrength = effectStrength;
     }
 
+    private void Start()
+    {
+        _explosionRadiousEffect = 5f;
+        _explosionStrength = 10f;
+    }
+
     /// <summary>
     /// Update is called once per frame and we use
     /// it to apply the effects of the projectile.
     /// </summary>
     void Update()
     {
+        StopAllCoroutines();
         GravityEffect();
     }
 
@@ -54,8 +61,6 @@ public class GrenadeProjectile : BasicPoolProjectile
         Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadiousEffect);
 
         // Optimization for garbagge collection
-        Vector3 forceVector;
-        float distance;
         Rigidbody colliderRB;
         foreach (Collider collider in colliders)
         {
@@ -63,6 +68,14 @@ public class GrenadeProjectile : BasicPoolProjectile
             {
                 continue;
             }
+
+            collider.TryGetComponent(out colliderRB);
+            if (colliderRB == null)
+            {
+                continue;
+            }
+
+            colliderRB.AddExplosionForce(_explosionStrength, transform.position, _explosionRadiousEffect);
         }
     }
 
@@ -83,7 +96,7 @@ public class GrenadeProjectile : BasicPoolProjectile
     /// </summary>
     private void OnDrawGizmosSelected()
     {
-        Color gizmoColor = Color.green;
+        Color gizmoColor = Color.blue;
         gizmoColor.a /= 2;
         Gizmos.color = gizmoColor;
         Gizmos.DrawSphere(transform.position, _explosionRadiousEffect);

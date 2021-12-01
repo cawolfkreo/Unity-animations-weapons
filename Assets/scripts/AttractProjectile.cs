@@ -22,12 +22,12 @@ public class AttractProjectile : BasicPoolProjectile
     /// This is how far the effects of gravity
     /// object will extend to.
     /// </summary>
-    private float _gravityRadiousEffect;
+    private float _explosionRadiousEffect;
 
     /// <summary>
     /// This is the base strength for the gravity.
     /// </summary>
-    private float _gravityStrength;
+    private float _explosionStrength;
 
     /// <summary>
     /// Sets the values for the effects of the
@@ -37,8 +37,8 @@ public class AttractProjectile : BasicPoolProjectile
     /// <param name="effectStrength">the strength of the effect</param>
     public override void SetAttractValues(float radiousEffect, float effectStrength)
     {
-        _gravityRadiousEffect = radiousEffect;
-        _gravityStrength = effectStrength;
+        _explosionRadiousEffect = radiousEffect;
+        _explosionStrength = effectStrength;
     }
 
     /// <summary>
@@ -47,17 +47,17 @@ public class AttractProjectile : BasicPoolProjectile
     /// </summary>
     void Update()
     {
-        GravityEffect();
+        ExplosionEffect();
     }
 
     /// <summary>
-    /// This method creates a gravity effect, it
+    /// This method creates a explosion effect, it
     /// attracts other objects to it based on the
     /// effects properties of the projectile.
     /// </summary>
-    private void GravityEffect()
+    private void ExplosionEffect()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, _gravityRadiousEffect);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadiousEffect);
 
         // Optimization for garbagge collection
         Vector3 forceVector;
@@ -70,6 +70,12 @@ public class AttractProjectile : BasicPoolProjectile
                 continue;
             }
 
+            collider.TryGetComponent(out colliderRB);
+            if (collider == null)
+            {
+                continue;
+            }
+
             forceVector = collider.transform.position;
             distance = Vector3.Distance(transform.position, forceVector);
             if (distance == 0)
@@ -78,10 +84,8 @@ public class AttractProjectile : BasicPoolProjectile
             }
             forceVector -= transform.position;      //The from this object to the collider.
             forceVector /= distance * distance;     //Further away objects will have less force applied.
-            forceVector *= _gravityStrength * 10;   //We increase the force that will be applied.
+            forceVector *= _explosionStrength * 10; //We increase the force that will be applied.
             forceVector *= -1;                      //We make the vector point from the collision to this gameObject.
-
-            collider.TryGetComponent(out colliderRB);
             colliderRB?.AddForce(forceVector);      //We add the force to the rigid body.
         }
     }
@@ -106,6 +110,6 @@ public class AttractProjectile : BasicPoolProjectile
         Color gizmoColor = Color.green;
         gizmoColor.a /= 2;
         Gizmos.color = gizmoColor;
-        Gizmos.DrawSphere(transform.position, _gravityRadiousEffect);
+        Gizmos.DrawSphere(transform.position, _explosionRadiousEffect);
     }
 }

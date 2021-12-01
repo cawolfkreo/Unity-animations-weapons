@@ -44,8 +44,8 @@ public class BasicPoolProjectile : MonoBehaviour
     /// This sets the values for any effects
     /// a projectile might have.
     /// </summary>
-    /// <param name="radiousEffect">The readious for the effect</param>
-    /// <param name="effectStrength">thre strength of the effect</param>
+    /// <param name="radiousEffect">The radious for the effect</param>
+    /// <param name="effectStrength">the strength of the effect</param>
     public virtual void SetAttractValues(float radiousEffect, float effectStrength)
     {
         //Since the base projectile doesn't have effects, this method

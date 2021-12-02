@@ -41,6 +41,6 @@ MonoBehaviour:
     weaponRotationOffset: {x: 0, y: 0, z: 0, w: 0}
     projectile: {fileID: 5105260178265009368, guid: b0ccbb9f318fafe49a43b6f6f7513449, type: 3}
     projectileSpawnOffset: {x: 0, y: 0, z: 0}
-    projectileLifeTime: 5
-    radiousEffect: 5
-    effectStrength: 50
+    projectileLifeTime: 20
+    radiousEffect: 20
+    effectStrength: 300

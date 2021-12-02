@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// If you want to make a grenade launcher this
+/// script will make an explosive projectile that
+/// will explode when touching any platform on a
+/// scene, pushing away objects close to the
+/// explosion.
+/// script by: Camilo Zambrano
+/// </summary>
 public class GrenadeProjectile : BasicPoolProjectile
 {
     /// <summary>
@@ -35,20 +43,21 @@ public class GrenadeProjectile : BasicPoolProjectile
         _explosionStrength = effectStrength;
     }
 
-    private void Start()
-    {
-        _explosionRadiousEffect = 5f;
-        _explosionStrength = 10f;
-    }
-
     /// <summary>
-    /// Update is called once per frame and we use
-    /// it to apply the effects of the projectile.
+    /// When we collide with something we check if
+    /// it is the floor and if it is, we trigger
+    /// the explosion effect.
     /// </summary>
-    void Update()
+    /// <param name="collision"></param>
+    private void OnCollisionEnter(Collision collision)
     {
-        StopAllCoroutines();
-        GravityEffect();
+        Debug.Log("called!!!");
+        if (IsFloor(collision.gameObject.layer))
+        {
+            Debug.Log("I touched the floor!");
+            ExplosionEffect();
+            gameObject.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -56,7 +65,7 @@ public class GrenadeProjectile : BasicPoolProjectile
     /// attracts other objects to it based on the
     /// effects properties of the projectile.
     /// </summary>
-    private void GravityEffect()
+    private void ExplosionEffect()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadiousEffect);
 
@@ -64,6 +73,11 @@ public class GrenadeProjectile : BasicPoolProjectile
         Rigidbody colliderRB;
         foreach (Collider collider in colliders)
         {
+            if(collider.transform == transform)
+            {
+                continue;
+            }
+
             if (!IsObjectLayer(collider.gameObject.layer))
             {
                 continue;
@@ -74,8 +88,8 @@ public class GrenadeProjectile : BasicPoolProjectile
             {
                 continue;
             }
-
-            colliderRB.AddExplosionForce(_explosionStrength, transform.position, _explosionRadiousEffect);
+            Debug.Log("Exploding!");
+            colliderRB.AddExplosionForce(_explosionStrength * 10f, transform.position, _explosionRadiousEffect, 10f);
         }
     }
 
@@ -83,11 +97,23 @@ public class GrenadeProjectile : BasicPoolProjectile
     /// This checks if a layer value is part of the
     /// mask used to detect objects.
     /// </summary>
-    /// <param name="layer"></param>
-    /// <returns></returns>
+    /// <param name="layer">The layer to check</param>
+    /// <returns>True if it is part of the object layer mask. false otherwise</returns>
     private bool IsObjectLayer(int layer)
     {
         return ObjectsLayer == (ObjectsLayer | (1 << layer));
+    }
+
+    /// <summary>
+    /// This detects if the given layer is part of
+    /// the platforms layer.
+    /// </summary>
+    /// <param name="layer">The layer to check</param>
+    /// <returns>True if it is part of the platform layer mask. false otherwise</returns>
+    private bool IsFloor(int layer)
+    {
+        int floorLayer = LayerMask.NameToLayer("Platforms");
+        return floorLayer == layer;
     }
 
     /// <summary>

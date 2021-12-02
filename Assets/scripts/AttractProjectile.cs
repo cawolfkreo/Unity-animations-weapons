@@ -94,8 +94,8 @@ public class AttractProjectile : BasicPoolProjectile
     /// This checks if a layer value is part of the
     /// mask used to detect objects.
     /// </summary>
-    /// <param name="layer"></param>
-    /// <returns></returns>
+    /// <param name="layer">The layer to check</param>
+    /// <returns>True if it is part of the object layer mask. false otherwise</returns>
     private bool IsObjectLayer(int layer)
     {
         return ObjectsLayer == (ObjectsLayer | (1 << layer));

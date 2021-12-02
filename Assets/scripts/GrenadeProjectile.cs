@@ -32,11 +32,27 @@ public class GrenadeProjectile : BasicPoolProjectile
     private float _explosionStrength;
 
     /// <summary>
+    /// This is the audio source for the explosion
+    /// effect.
+    /// </summary>
+    [Tooltip("This is the audio source for the explosion effect.")]
+    public AudioSource audioSource;
+
+    /// <summary>
+    /// We get the audio source component that will
+    /// play the explosion sound effect.
+    /// </summary>
+    private void Awake()
+    {
+        audioSource = GameManagerSingleton.instance.gameObject.GetComponent<AudioSource>();
+    }
+
+    /// <summary>
     /// Sets the values for the effects of the
     /// gravity on the component.
     /// </summary>
-    /// <param name="radiousEffect"></param>
-    /// <param name="effectStrength"></param>
+    /// <param name="radiousEffect">how far the effects take place</param>
+    /// <param name="effectStrength">how strong are the effects</param>
     public override void SetAttractValues(float radiousEffect, float effectStrength)
     {
         _explosionRadiousEffect = radiousEffect;
@@ -51,10 +67,8 @@ public class GrenadeProjectile : BasicPoolProjectile
     /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("called!!!");
         if (IsFloor(collision.gameObject.layer))
         {
-            Debug.Log("I touched the floor!");
             ExplosionEffect();
             gameObject.SetActive(false);
         }
@@ -88,9 +102,11 @@ public class GrenadeProjectile : BasicPoolProjectile
             {
                 continue;
             }
-            Debug.Log("Exploding!");
+
             colliderRB.AddExplosionForce(_explosionStrength * 10f, transform.position, _explosionRadiousEffect, 10f);
         }
+
+        audioSource?.Play(); //explosion sound effect.
     }
 
     /// <summary>

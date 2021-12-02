@@ -128,3 +128,4 @@ MonoBehaviour:
   ObjectsLayer:
     serializedVersion: 2
     m_Bits: 64
+  audioSource: {fileID: 0}

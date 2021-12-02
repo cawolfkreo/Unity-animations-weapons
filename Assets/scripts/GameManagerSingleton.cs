@@ -84,6 +84,18 @@ public class GameManagerSingleton : MonoBehaviour
     }
 
     /// <summary>
+    /// We use the update to detect when the player
+    /// wants to close the game.
+    /// </summary>
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
+    /// <summary>
     /// This method should be used at the beginning
     /// of a scene to set the animation to play on
     /// the model.
